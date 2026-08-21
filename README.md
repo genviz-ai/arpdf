@@ -11,6 +11,13 @@ tags:
   - document-understanding
   - evaluation
   - internationalization
+  - benchmark
+  - rtl
+  - arabic-nlp
+  - reproducible
+  - ocr
+  - pdf-extraction
+  - tender-documents
 pretty_name: ArPDF
 size_categories:
   - n<1K
@@ -125,3 +132,33 @@ python pdf_bench.py
 
 Writes every generator × extractor combination to `results.jsonl` with the extracted text
 for each, so the failure modes can be inspected rather than taken on trust.
+
+<!-- series-block -->
+## Does Arabic Survive the Pipeline?
+
+This is one of three reproducible benchmarks, one per stage of a real production pipeline.
+Each measures an Arabic failure that looks correct to anyone who does not read Arabic — which
+is exactly why it ships.
+
+- [ArNum-TTS](https://huggingface.co/datasets/syamjithnk/arnum-tts) — do numbers survive speech synthesis?
+- [ArShape](https://huggingface.co/datasets/syamjithnk/arshape) — does the standard reshaping recipe survive rendering?
+- [ArPDF](https://huggingface.co/datasets/syamjithnk/arpdf) — does Arabic survive a PDF round trip? **← you are here**
+
+All three are CC BY 4.0 and ship the scorer, the raw per-item results, and an explicit statement
+of what the measurement does *not* establish. Code is MIT (see `LICENSE`).
+<!-- series-block -->
+
+<!-- citation-block -->
+## Citation
+
+```bibtex
+@misc{syamjithnk_arpdf_2026,
+  author       = {Syamjith NK},
+  title        = {ArPDF: Arabic survival through PDF generation and extraction},
+  year         = {2026},
+  publisher    = {Hugging Face},
+  howpublished = {\url{https://huggingface.co/datasets/syamjithnk/arpdf}},
+  note         = {Data CC BY 4.0; code MIT}
+}
+```
+<!-- citation-block -->
