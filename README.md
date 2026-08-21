@@ -86,7 +86,20 @@ Counted separately, because they need different fixes and have very different bl
 | | | extracted `اإلمارات` |
 | spacing | letters intact, word and number boundaries lost | extracted `النسبة2026في` |
 
-Observed across the matrix: 9 reversed, 17 ligature, 4 mangled.
+Observed across the 60-row matrix: **22 clean, 23 ligature, 11 reversed, 4 mangled**.
+
+> **Correction, 21 August 2026.** This line previously read *"9 reversed, 17 ligature, 4
+> mangled"*. Those figures were wrong: they summed to 30 rows when the matrix has 38
+> non-clean results, and they under-counted both reversed and ligature. The corrected counts
+> above are recomputed directly from `results.jsonl` and can be reproduced with:
+>
+> ```python
+> import json, collections
+> collections.Counter(json.loads(l)["verdict"] for l in open("results.jsonl"))
+> ```
+>
+> The direction of the finding is unchanged — ligature remains the most common failure mode
+> and the most dangerous, because it survives a human proofread. Only the counts were wrong.
 
 **The ligature mode is the dangerous one.** It is subtle enough to survive a human
 proofread — a reader skims past `اإلمارات` — while still breaking exact-match search,
